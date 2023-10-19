@@ -1,0 +1,155 @@
+:root {
+    /* :root表示文档根元素，其中声明的css全局变量，可以在之后用var()函数调用 */
+    --primary-color: #31c27c;
+  }
+  body {
+    margin: 0;
+    background: #f5f5f5;
+    color: #333;
+    /* 字体 */
+    font-family: Microsoft Yahei;
+    /* 字号 */
+    font-size: 14px;
+    /* min-width: 1000px; */
+  }
+  a {
+    /* 去除默认情况连接下的下划线 */
+    text-decoration: none;
+    color: #000;
+  }
+  header {
+    height: 90px;
+    background: white;
+    /* header采用flex布局，并设置水平垂直居中 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  main {
+    /* width: 1200px; */
+    /* main盒子设置统一内边距 */
+    padding: 20px;
+    /* main盒子在body中水平居中 */
+    margin: auto;
+  }
+  .tag-list {
+    margin-top: 50px;
+    margin-bottom: 15px;
+  }
+  .tag-item {
+    /* <a>标签转换为行内元素 */
+    display: inline-block;
+    padding: 0 8px;
+    margin-right: 24px;
+    /* 设置行高 */
+    line-height: 26px;
+    color: #000;
+    text-decoration: none;
+  }
+  .tag-active {
+    /* 使用var函数调用上边的全局颜色变量 */
+    background: var(--primary-color);
+    color: white;
+  }
+  .tag-item:not(.tag-active):hover {
+    color: var(--primary-color);
+  }
+  .nowrap {
+    white-space: nowrap;
+    /* 溢出的部分隐藏 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .playlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    gap: 45px 15px;
+    margin-bottom: 45px;
+  }
+  .cover-wrap {
+    display: flex;
+    
+    position: relative;
+    /* 溢出盒子的部分隐藏，为下边鼠标移动到背景上背景放大做准备，不设置会溢出 */
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 15px;
+    /* 垂直居中 */
+    align-items: center;
+    /* 水平居中 */
+    justify-content: center;
+    /* 鼠标移动到上边显示 */
+    cursor: pointer;
+  }
+  .cover-img {
+    width: 100%;
+  
+    transition: all 0.75s;
+  }
+  .cover-mask {
+    position: absolute;
+    background: #000;
+    transition: all 0.5s;
+  }
+  .cover-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -35px;
+    margin-top: -35px;
+    /* 初始透明度为0 */
+    opacity: 0;
+    /* 播放器按钮初始缩小 */
+    transform: scale(0.7);
+    transition: all 0.5s;
+  }
+  .cover-wrap:hover .cover-mask {
+    /* 鼠标悬浮透明度增加，显示遮罩效果 */
+    opacity: 0.2;
+  }
+  .cover-wrap:hover .cover-play {
+    opacity: 1;
+    /* 播放器按钮显现并变为原来大小 */
+    transform: scale(1);
+  }
+  .cover-wrap:hover .cover-img {
+    /* 音乐背景图片也放大 */
+    transform: scale(1.07);
+  }
+  .album-title:hover {
+    color: var(--primary-color);
+  }
+  .album-author {
+    color: #999;
+    line-height: 1.6;
+  }
+  .album-author:hover {
+    color: var(--primary-color);
+  }
+  .album-time {
+    color: #999;
+  }
+  .page {
+      /* 设置为flex布局，使子元素水平垂直居中 */ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-item {
+    display: inline-block;
+    color: #a2a2a2;
+    line-height: 50px;
+    padding: 0 20px;
+    margin: 10px;
+    font-size: 16px;
+  }
+  .page-current, .page-item:not(.page-more):hover {
+    background: var(--primary-color);
+    color: white;
+  }
+  footer {
+    margin-top: 60px;
+    background: #333;
+    height: 200px;
+  }
+  

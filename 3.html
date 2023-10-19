@@ -1,0 +1,138 @@
+</form>
+<form action="" class="as">
+  <label for="old">年龄</label>
+  <input type="text" name="old" id="old" />
+</form>
+<form action="" class="as">
+  <label for="jg">籍贯</label>
+  <select name="" id="province">
+    <option value="0">省份</option>
+    <option value="1">湖北</option>
+    <option value="2">湖南</option>
+    <lect>
+    <select name="" id="city">
+    <option value="0">市</option>
+    <lect>
+</label>
+</form>
+<form action="">
+  <label for="xueli">个人学历</label>
+  <select name="学历" id="xueli" class="xueli">
+    <option value="0">高中</option>
+    <option value="1" selected="selected">专科</option>
+    <option value="2">本科</option>
+    <option value="3">硕士</option>
+    <option value="4">博士后</option>
+  <lect>
+</form>
+</div>
+<div>
+  <form action="">
+      <label for="sala">月薪</label>
+      <input
+          type="range"
+          id="score"
+          name="score"
+          min="0.0"
+          max="10000"
+          step="1"
+          value="6000"
+      /><span id="msg"></span>
+</form>
+</div>
+<div>
+  <form action="">
+      <label for="like">个人爱好</label>
+      <input type="checkbox" name="like" value="唱歌" />唱歌 &nbsp;
+      <input type="checkbox" name="like" value="跑步" />跑步 &nbsp;
+      <input type="checkbox" name="like" value="游泳" />游泳 
+  </form>
+  <form action="">
+      <label for="pic">照片</label>
+      <input type="file" name="myfile" accept="文件类型" />
+  </form>
+  <form action="">
+      <table>
+          <tr>
+              <td><label for="intro">个人简介</label></td>
+              <td><textarea name="intro" id="" cols="30" rows="10"></textarea></td>
+          </tr>
+      </table>
+  </form>
+  <form action="">
+      <label for="">&nbsp;</label>
+      <input type="submit" value="提交" class="qw" />
+      <input type="reset" value="重填" class="qw"/>
+  </form>
+</div>
+</body>
+<script>
+var msg = document.getElementById("msg"); // 根据id值找到span元素
+window.onload = function () {
+msg.innerHTML = document.getElementById("score").value; // 获取区间域初始value值
+};
+document.getElementById("score").onchange = function () {
+msg.innerHTML = this.value; // 将当前区间域的value作为span元素的内容
+};
+</script>
+<script>
+var code_box = document.getElementById("code_box");
+var change = document.getElementById("change");
+function refreshCode() {
+//62个字符 随机选择4位
+var code =
+    "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM",
+  char = "",
+  result = "";
+
+for (var i = 0; i < 4; i++) {
+  var code_index = Math.round(Math.random() * 61);
+  var char = code[code_index];
+  if (result.toUpperCase().indexOf(char.toUpperCase()) > -1) {
+    i--;
+    continue;
+  }
+  result += char;
+}
+code_box.innerHTML = result;
+}
+//点击事件
+code_box.onclick = refreshCode;
+change.onclick = refreshCode;
+</script>
+<script>
+let province = document.getElementById("province");
+let city = document.getElementById("city");
+province.addEventListener("change", createCity);
+//创建city信息
+function createCity() {
+let val = province.value;
+let ops;
+switch (val) {
+  case "0": //case用字符串
+    city.innerHTML = '<option value="0">市</option>';
+    break;
+  case "1":
+    city.innerHTML = ""; //清空
+    ops = createOp(0, "武汉");
+    city.appendChild(ops);
+    ops = createOp(1, "荆州");
+    city.appendChild(ops);
+    break;
+  case "2":
+    city.innerHTML = "";
+    ops = createOp(0, "长沙");
+      city.appendChild(ops);
+      ops = createOp(1, "岳阳");
+      city.appendChild(ops);
+      break;
+}
+}
+function createOp(val, cname) {
+let ops = document.createElement("option");
+ops.value = val;
+ops.innerHTML = cname;
+return ops;
+}
+</script>
+<ml>
